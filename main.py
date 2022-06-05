@@ -1,12 +1,14 @@
 import discord
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #Definição do nosso cliente do discord
 client = discord.Client()
 
 #Token de segurança do nosso discord
-texto = open("token.txt", "r")
-TOKEN = texto.read()
-
+TOKEN = os.getenv("TOKEN")
 #Executar em caso de perca do TOKEN
 #print(TOKEN)
 
