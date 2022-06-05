@@ -1,14 +1,14 @@
 import discord
 import os
 from dotenv import load_dotenv
-import trained_model as model
+#import trained_model as model
 
 
 # --------- Modelo --------
 #Passagem da url da imagem para o modelo analizar
 
-model = model.Model()
-loaded_model = model.load_model()
+#model = model.Model()
+#loaded_model = model.load_model()
 
 load_dotenv()
 
@@ -21,7 +21,6 @@ TOKEN = os.getenv("TOKEN")
 #print(TOKEN)
 
 prefix = '$'
-
 
 @client.event
 async def on_ready():
@@ -47,15 +46,21 @@ async def on_message(message):
     #await message.delete()
     await channel.send("Bot iniciado!")
     
-  if (anexo and (content == prefix + "emp")):
-    url = anexo[1].proxy_url
-    #await message.delete()
-    print(url)
+  #if (anexo and (content == prefix + "emp")):
+   
 
   if (content == prefix + "emp"):
-    img = content.split()
-    url = img[1]
-    print(url)
+    if (anexo):
+      url = anexo[0].proxy_url
+      #await message.delete()
+      print(url)
+      
+    else:
+      img = content.split()
+      url = img[1]
+      print(img)
+      print(url)
+    
 
   if (content == prefix + "sobre"):
     sobre = """
@@ -85,8 +90,8 @@ async def on_message(message):
     await message.delete()
     await channel.send("regra do senac é seu c*")
 
-  response = model.predict(loaded_model, url)
-  await channel.send("A sua placa é: `" + response + "`")
+  #response = model.predict(loaded_model, url)
+  #await channel.send("A sua placa é: `" + response + "`")
 
 
 #Executar e atualizar o Bot
