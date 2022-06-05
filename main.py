@@ -47,8 +47,8 @@ async def on_message(message):
     #await message.delete()
     await channel.send("Bot iniciado!")
     
-  if (anexo):
-    url = anexo[0].proxy_url
+  if (anexo and (content == prefix + "emp")):
+    url = anexo[1].proxy_url
     #await message.delete()
     print(url)
 
