@@ -8,75 +8,22 @@ import requests
 
 
 class Model: 
-    classes = { 0:'Speed limit (20km/h)',
-            1:'Speed limit (30km/h)', 
-            2:'Speed limit (50km/h)', 
-            3:'Speed limit (60km/h)', 
-            4:'Speed limit (70km/h)', 
-            5:'Speed limit (80km/h)', 
-            6:'End of speed limit (80km/h)', 
-            7:'Speed limit (100km/h)', 
-            8:'Speed limit (120km/h)', 
-            9:'No passing', 
-            10:'No passing veh over 3.5 tons', 
-            11:'Right-of-way at intersection', 
-            12:'Priority road', 
-            13:'Yield', 
-            14:'Stop', 
-            15:'No vehicles', 
-            16:'Veh > 3.5 tons prohibited', 
-            17:'No entry', 
-            18:'General caution', 
-            19:'Dangerous curve left', 
-            20:'Dangerous curve right', 
-            21:'Double curve', 
-            22:'Bumpy road', 
-            23:'Slippery road', 
-            24:'Road narrows on the right', 
-            25:'Road work', 
-            26:'Traffic signals', 
-            27:'Pedestrians', 
-            28:'Children crossing', 
-            29:'Bicycles crossing', 
-            30:'Beware of ice/snow',
-            31:'Wild animals crossing', 
-            32:'End speed + passing limits', 
-            33:'Turn right ahead', 
-            34:'Turn left ahead', 
-            35:'Ahead only', 
-            36:'Go straight or right', 
-            37:'Go straight or left', 
-            38:'Keep right', 
-            39:'Keep left', 
-            40:'Roundabout mandatory', 
-            41:'End of no passing', 
-            42:'End no passing veh > 3.5 tons' }
-
     def load_model(self):
         model = keras.models.load_model('model.h5')
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
 
-    def predict(self, model):
+    def predict(self, model, url):
         data = []
-        url = "https://media.discordapp.net/attachments/639307153013866550/982866407157022750/unknown.png"
+        url = url
         filename = url.split("/")[-1]
 
-        img_data = requests.get(url).content
-        with open(filename, 'wb') as handler:
-            handler.write(img_data)
+        self.save_image(url, filename)
 
         try: 
-            # response = requests.get(url, stream = True)
-            # image_bytes = BytesIO(response.content)
-            # image = Image.open(image_bytes)
-            # a = np.asarray(image)
-            image = cv2.imread(filename)
-            image_fromarray = Image.fromarray(image, 'RGB')
-            resize_image = image_fromarray.resize((30, 30))
-            data.append(np.array(resize_image))
+            data.append(self.prepare_image(filename))
         except:
-            print("Error")
+            print("Error preparing image")
 
         test = np.array(data) / 255
 
@@ -85,7 +32,59 @@ class Model:
         print(self.classes[classes_x[0]])
 
         os.remove(filename)
+         
+    def save_image(self, url, filename):
+        img_data = requests.get(url).content
+        with open(filename, 'wb') as handler:
+            handler.write(img_data)
 
+    def prepare_image(self, filename):
+        image = cv2.imread(filename)
+        image_fromarray = Image.fromarray(image, 'RGB')
+        resize_image = image_fromarray.resize((30, 30))
+        return np.array(resize_image)
 
-
-    
+    classes = { 0:'Limite de velocidade (20km/h)',
+            1:'Limite de velocidade (30km/h)', 
+            2:'Limite de velocidade (50km/h)', 
+            3:'Limite de velocidade (60km/h)', 
+            4:'Limite de velocidade (70km/h)', 
+            5:'Limite de velocidade (80km/h)', 
+            6:'Fim do Limite de velocidade (80km/h)', 
+            7:'Limite de velocidade (100km/h)', 
+            8:'Limite de velocidade (120km/h)', 
+            9:'Proibido ultrapassar', 
+            10:'Nenhum veículo com mais de 3.5 tons.', 
+            11:'Direito de passagem no cruzamento', 
+            12:'Estrada prioritária', 
+            13:'Rendimento', 
+            14:'Pare', 
+            15:'Sem veículos', 
+            16:'Veículos > 3.5tons proibidos', 
+            17:'Entrada Probida', 
+            18:'Cuidado geral', 
+            19:'Curva perigosa a esquerda', 
+            20:'Curva perigosa a direita', 
+            21:'Curva dupla', 
+            22:'Estrada esburacada', 
+            23:'Estrada escorregadia', 
+            24:'Estrada estreita à direita', 
+            25:'Obras na estrada', 
+            26:'Placas de trânsito', 
+            27:'Pedestres', 
+            28:'Crianças atravessando', 
+            29:'Bicicletas atravessando', 
+            30:'Cuidado com gelo/neve',
+            31:'Animais selvagens atravessando', 
+            32:'Velocidade final + limites de ultrapassagem', 
+            33:'Vire à direita', 
+            34:'Vire à esquerda', 
+            35:'Siga em frente', 
+            36:'Vá direto ou para a direita', 
+            37:'Vá direto ou para a esquerda', 
+            38:'Permaneça a direita', 
+            39:'Permaneça a esquerda', 
+            40:'Rotatória obrigatória', 
+            41:'Fim de não ultrapassar', 
+            42:'Fim de não ultrapassar veículos > 3.5 tons' 
+            }   
