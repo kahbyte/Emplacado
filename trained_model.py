@@ -1,16 +1,10 @@
 import numpy as np
-import pandas as pd
 import os
 import cv2
-import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
 from PIL import Image
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.optimizers import Adam
-from io import BytesIO
 import requests
-import urllib
 
 
 class Model: 

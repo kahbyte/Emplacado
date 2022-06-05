@@ -1,6 +1,11 @@
 import discord
 import os
 from dotenv import load_dotenv
+# import trained_model as model
+
+# model = model.Model()
+# loaded_model = model.load_model()
+# model.predict(loaded_model)
 
 load_dotenv()
 
