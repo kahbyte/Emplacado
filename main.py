@@ -1,15 +1,14 @@
 import discord
 import os
 from dotenv import load_dotenv
-# trained_model as model
+import trained_model as model
 
 
   # --------- Modelo --------
   #Passagem da url da imagem para o modelo analizar
 
-  #model = model.Model()
-  #loaded_model = model.load_model()
-
+model = model.Model()
+loaded_model = model.load_model()
 
 load_dotenv()
 
@@ -51,7 +50,6 @@ async def on_message(message):
   if (anexo):
     url = anexo[0].proxy_url
     #await message.delete()
-    await channel.send(url)
     print(url)
 
   if (content == prefix + "e"):
@@ -90,8 +88,8 @@ async def on_message(message):
   if(content == prefix + "banana"):
     await channel.send(mention + ", meu pau o seu c* ama")
 
-  #response = model.predict(loaded_model, url)
-  #channel.send(response)
+  response = model.predict(loaded_model, url)
+  await channel.send(response)
 
 
 #Executar e atualizar o Bot
