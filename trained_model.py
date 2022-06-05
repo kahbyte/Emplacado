@@ -5,6 +5,7 @@ import tensorflow as tf
 from tensorflow import keras
 from PIL import Image
 import requests
+import random
 
 
 class Model: 
@@ -17,6 +18,10 @@ class Model:
         data = []
         url = url
         filename = url.split("/")[-1]
+        
+        if not self.is_valid_format(filename):
+            supported_formats = 'Formatos suportados: jpg, jpeg, png, etc.'
+            return random.choice(self.rude_responses) + " " + supported_formats
 
         self.save_image(url, filename)
 
@@ -25,13 +30,10 @@ class Model:
         except:
             print("Error preparing image")
 
-        test = np.array(data) / 255
-
-        pred = model.predict(test)
-        classes_x=np.argmax(pred,axis=1)
-        print(self.classes[classes_x[0]])
-
+        result = self.test_image(data, model)
+        
         os.remove(filename)
+        return self.classes[result[0]]
          
     def save_image(self, url, filename):
         img_data = requests.get(url).content
@@ -43,6 +45,24 @@ class Model:
         image_fromarray = Image.fromarray(image, 'RGB')
         resize_image = image_fromarray.resize((30, 30))
         return np.array(resize_image)
+    
+    def test_image(self, data, model):
+        test = np.array(data) / 255
+
+        pred = model.predict(test)
+        classes_x=np.argmax(pred,axis=1)
+        return classes_x
+
+    def is_valid_format(self, filename): 
+        format = filename.split(".")[-1]
+        return format == "jpg" or format == 'png' or format == "jpeg"
+    
+    rude_responses = [
+        'Mandar a mãe ninguém quer.',
+        'Manda a mãe para ver se classifica.',
+        'Ta me tirando?',
+        'Você não vai me pegar tão fácil.'
+    ]
 
     classes = { 0:'Limite de velocidade (20km/h)',
             1:'Limite de velocidade (30km/h)', 

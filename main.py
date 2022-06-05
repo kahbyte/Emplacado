@@ -1,12 +1,11 @@
 import discord
 import os
 from dotenv import load_dotenv
-import trained_model as model
+# import trained_model as model
 
-model = model.Model()
-loaded_model = model.load_model()
-url = "https://media.discordapp.net/attachments/983088022973218856/983093376599588914/00000.png"
-model.predict(loaded_model, url)
+# model = model.Model()
+# loaded_model = model.load_model()
+# model.predict(loaded_model, url)
 
 load_dotenv()
 
