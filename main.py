@@ -1,12 +1,15 @@
 import discord
 import os
 from dotenv import load_dotenv
-import trained_model as model
+# trained_model as model
 
-model = model.Model()
-loaded_model = model.load_model()
-url = "https://media.discordapp.net/attachments/983088022973218856/983093376599588914/00000.png"
-model.predict(loaded_model, url)
+
+  # --------- Modelo --------
+  #Passagem da url da imagem para o modelo analizar
+
+  #model = model.Model()
+  #loaded_model = model.load_model()
+
 
 load_dotenv()
 
@@ -31,7 +34,8 @@ async def on_message(message):
   channel = message.channel
   author = message.author.name
   anexo = message.attachments
-  
+  mention = message.author.mention
+
   #Previnir que o Bot responda a ele mesmo
   if(author == "Emplacado"):
     return
@@ -41,15 +45,53 @@ async def on_message(message):
   #comando com marcador $ para reconhecer um comando
   #if message.content.startswith('$'):
   if(content == prefix + "iniciar"):
-    await message.delete()
+    #await message.delete()
     await channel.send("Bot iniciado!")
-    
     
   if (anexo):
     url = anexo[0].proxy_url
-    await message.delete()
+    #await message.delete()
     await channel.send(url)
     print(url)
+
+  if (content == prefix + "e"):
+    img = content.split()
+    url = img[1]
+    print(url)
+
+  if (content == prefix + "sobre"):
+    sobre = """
+    Projeto Integrador 5 - Aplicação de Inteligência Artificial
+
+    Alunos:
+      * Gabriel Kenji
+      * Kauê Sales
+      * Thiago Felix
+      * Vinycius Zanardi
+
+    Web-site:
+    Artigo Científico: 
+    Para mais informações: https://github.com/kahbyte/Emplacado 
+    """
+    await channel.send(sobre)
+
+
+  if (content == prefix + "help"):
+    help = """Comandos:
+    $emp - para reconhecer uma placa
+    $sobre - para saber mais referente ao projeto
+    """
+    await channel.send(help)
+     
+  if (content == prefix + "site"):
+    await message.delete()
+    await channel.send("regra do senac é seu c*")
+
+  if(content == prefix + "banana"):
+    await channel.send(mention + ", meu pau o seu c* ama")
+
+  #response = model.predict(loaded_model, url)
+  #channel.send(response)
 
 
 #Executar e atualizar o Bot
