@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 import trained_model as model
 
 
-  # --------- Modelo --------
-  #Passagem da url da imagem para o modelo analizar
+# --------- Modelo --------
+#Passagem da url da imagem para o modelo analizar
 
 model = model.Model()
 loaded_model = model.load_model()
@@ -52,7 +52,7 @@ async def on_message(message):
     #await message.delete()
     print(url)
 
-  if (content == prefix + "e"):
+  if (content == prefix + "emp"):
     img = content.split()
     url = img[1]
     print(url)
@@ -85,11 +85,8 @@ async def on_message(message):
     await message.delete()
     await channel.send("regra do senac é seu c*")
 
-  if(content == prefix + "banana"):
-    await channel.send(mention + ", meu pau o seu c* ama")
-
   response = model.predict(loaded_model, url)
-  await channel.send(response)
+  await channel.send("A sua placa é: `" + response + "`")
 
 
 #Executar e atualizar o Bot
