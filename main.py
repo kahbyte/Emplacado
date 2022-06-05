@@ -2,8 +2,11 @@ import discord
 
 #Definição do nosso cliente do discord
 client = discord.Client()
+
 #Token de segurança do nosso discord
-TOKEN = "OTgyNzAwNjk4MTc5MzQ2NTQz.G1ypQh.txxb4MdgDsgDFaq7NOOiXpoJPjHbQsoXRvJRrs"
+texto = open("token.txt", "r")
+TOKEN = texto.read()
+
 #Executar em caso de perca do TOKEN
 #print(TOKEN)
 
@@ -40,7 +43,6 @@ async def on_message(message):
     await channel.send(url)
     print(url)
 
-    
 
 #Executar e atualizar o Bot
 client.run(TOKEN)
