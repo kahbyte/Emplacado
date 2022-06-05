@@ -6,10 +6,12 @@ dotenv.py
 
 numpy.py
 
-cv2.py
+opencv-python-headless==4.2.0.32
 
 tensorflow.py
 
-PIL.py
+pillow.py
 
 requests.py
+
+random.py
