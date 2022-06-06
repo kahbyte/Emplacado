@@ -1,4 +1,3 @@
-from statistics import mode
 import discord
 import os
 from dotenv import load_dotenv
@@ -21,11 +20,12 @@ TOKEN = os.getenv("TOKEN")
 #Executar em caso de perca do TOKEN
 #print(TOKEN)
 
-prefix = '$'
+prefix = '\\'
 
 @client.event
 async def on_ready():
   print ("BOT ONLINE")
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=prefix+"help"))
 
 @client.event
 async def on_message(message):
@@ -41,8 +41,7 @@ async def on_message(message):
 
   # ------ Comandos ------
 
-  #comando com marcador $ para reconhecer um comando
-  #if message.content.startswith('$'):
+  #comando utilizando o prefixo para reconhecer um comando
 
   if (content.startswith(prefix)):
     if(content == prefix + "iniciar"):
@@ -55,15 +54,14 @@ async def on_message(message):
         print("imagem anexada")
         url = anexo[0].proxy_url
         print(url)
-        
       else:
         print("imagem com link")
         img = content.split()
         url = img[1]
-        print(img)
-        print(url)
+        print(url)    
       response = model.predict(loaded_model, url)
       await channel.send(f"{model.random_response()} `" + response + "`")
+      print (img)
       return
       
     elif (content == prefix + "sobre"):
@@ -92,21 +90,24 @@ async def on_message(message):
       list = """"""
 
       for key, value in classes:
-        list += (f"{key}: {value}") + "\n"
-      print(list) 
+        list += (f"{key}: {value}") + "\n" 
 
       await channel.send("`" + list + "`")
 
     elif (content == prefix + "help"):
       help = """Comandos:
-      $emp - e adicione uma imagem via link ou anexo para reconhecer uma placa
-      $sobre - para mais informações referentes ao projeto
-      $classes - para conhecer as placas que podem ser reconhecidas
+      """+prefix+"""emp - e adicione uma imagem via link ou anexo para reconhecer uma placa
+      """+prefix+"""sobre - para mais informações referentes ao projeto
+      """+prefix+"""classes - para conhecer as placas que podem ser reconhecidas
       """
       await channel.send(help)
     
+    elif (content == prefix + "celso"):
+      await channel.send("Esse professor é show!")
+
     else:
-      error = "comando invalido. Digite $help."
+      #error = mention + "Comando invalido. Digite "+prefix+"help."
+      error = "Comando invalido. Digite "+prefix+"help."
       await channel.send(error)
 
 #Executar e atualizar o Bot
