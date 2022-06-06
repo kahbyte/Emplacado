@@ -1,8 +1,8 @@
 discord
+random2
 numpy
 opencv-python
 tensorflow
 pillow
 requests
 python-dotenv
-random2
