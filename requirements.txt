@@ -1,6 +1,6 @@
 discord
 numpy
-opencv
+opencv-python
 tensorflow
 pillow
 requests
