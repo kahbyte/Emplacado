@@ -1,5 +1,4 @@
 discord.py
-os.py
 dotenv.py
 numpy.py
 opencv-python.py
