@@ -30,8 +30,8 @@ class Model:
         except:
             print("Error preparing image")
 
-        result = self.test_image(data, model)
-        response = f"{self.random_response()} `" + self.classes[result[0]] + "`"
+        result, percentage = self.test_image(data, model)
+        response = f"{self.random_response()} `" + self.classes[result[0]] + " | certeza: " +  str(np.round(percentage, 2)) + "%"+ "`"
         return response
          
     def save_image(self, url, filename):
@@ -51,7 +51,7 @@ class Model:
 
         pred = model.predict(test)
         classes_x=np.argmax(pred,axis=1)
-        return classes_x
+        return classes_x, np.amax(pred) * 100
 
     def is_valid_format(self, filename): 
         format = filename.split(".")[-1]
