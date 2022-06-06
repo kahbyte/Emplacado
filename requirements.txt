@@ -4,5 +4,5 @@ opencv-python
 tensorflow
 pillow
 requests
-random
-dotenv
+python-dotenv
+random2
