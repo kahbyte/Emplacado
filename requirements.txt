@@ -6,7 +6,7 @@ dotenv.py
 
 numpy.py
 
-opencv-python-headless==4.2.0.32
+opencv-python.py
 
 tensorflow.py
 
