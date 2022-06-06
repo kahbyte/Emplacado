@@ -1,6 +1,6 @@
 discord
 numpy
-opencv-python-headless==4.2.0.32
+opencv-python
 tensorflow-cpu
 pillow
 requests
