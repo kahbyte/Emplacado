@@ -61,15 +61,16 @@ class Model:
         return random.choice(self.sign_responses)
     
     rude_responses = [
-        'Deve ser a sua mãe.',
+        'Parece que alguém comprou a carteira.',
         'Manda a mãe para ver se classifica.',
+        'Leio, não nego. Classifico se eu quiser..',
         'Você não vai me pegar tão fácil.',
         'Que feio, mandando imagem nada a ver para tirar nota de aluno'
     ]
 
     sign_responses = [
-        'isso me parece uma placa de:',
-        'meio torto, acho que é:', 
+        'Isso me parece uma placa de:',
+        'Meio torto, acho que é:', 
         'Vendo por esse ângulo, parece:',
         'Definitivamente é:',
         'Se eu tivesse que perguntar pro Celso, ele diria que é:',
@@ -77,7 +78,8 @@ class Model:
         'Olhando por esse lado, é:',
         'Alguem do grupo digitou rapidinho que é:',
         'Celso, me da um 10 por esse acerto:',
-        'Valendo uma pizza:',
+        'Valendo um salgado da p3:',
+        'Lá em Pato Branco, essa placa é:',
         'Já vi essa umas 50mil vezes enquanto treinava:',
         'Sabia que eu levei 15min pra aprender essa numa GPU?',
         'As CPUs do Senac levariam umas 30 horas pra aprender essa ai:'

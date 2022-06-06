@@ -56,6 +56,8 @@ async def on_message(message):
         url = img[1]
       response = model.predict(loaded_model, url)
       await channel.send(response)
+      if ("Pare" in response):
+        await message.add_reaction("🛑")
       return
       
     elif (content == prefix + "sobre"):
@@ -68,16 +70,19 @@ async def on_message(message):
         * Thiago Felix
         * Vinycius Zanardi
 
-      Web-site:
-      Artigo Científico: 
-      Para mais informações: https://github.com/kahbyte/Emplacado 
+      Web-site: [Em construção] ⚠️
+      Artigo Científico: [Em construção] ⚠️
+      Para mais informações: https://github.com/kahbyte/Emplacado 🖥️
       """
       await channel.send(sobre)
     
-    elif (content == prefix + "site"):
-      await message.delete()
-      await channel.send("regra do senac é seu c*")
+    #elif (content == prefix + "site"):
+      #await message.delete()
+      #await channel.send("regra do senac é seu c*")
     
+    #Novo comando de piada
+    #elif (content == )
+
     elif (content == prefix + "classes"):
       classes = model.classes.items()
 
@@ -104,8 +109,8 @@ async def on_message(message):
       
 
     else:
-      #error = mention + "Comando invalido. Digite "+prefix+"help."
-      error = "Comando invalido. Digite "+prefix+"help."
+      error = mention + "Comando invalido. Digite "+prefix+"help."
+      #error = "Comando invalido. Digite "+prefix+"help."
       await channel.send(error)
 
 #Executar e atualizar o Bot
