@@ -98,6 +98,10 @@ async def on_message(message):
     
     elif (content == prefix + "celso"):
       await channel.send("Esse professor é show!")
+    
+    elif (content == prefix + "gol"):
+      await channel.send("de placa!!")
+      
 
     else:
       #error = mention + "Comando invalido. Digite "+prefix+"help."
