@@ -1,17 +1,9 @@
 discord.py
-
 os.py
-
 dotenv.py
-
 numpy.py
-
 opencv-python.py
-
 tensorflow.py
-
 pillow.py
-
 requests.py
-
 random.py
