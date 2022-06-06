@@ -49,19 +49,13 @@ async def on_message(message):
       return
     
     elif content.startswith(prefix + "emp"):
-      print("recebi emp")
       if (anexo):
-        print("imagem anexada")
         url = anexo[0].proxy_url
-        print(url)
       else:
-        print("imagem com link")
         img = content.split()
         url = img[1]
-        print(url)    
       response = model.predict(loaded_model, url)
-      await channel.send(f"{model.random_response()} `" + response + "`")
-      print (img)
+      await channel.send(response)
       return
       
     elif (content == prefix + "sobre"):

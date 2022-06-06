@@ -1,3 +1,4 @@
+from urllib import response
 import numpy as np
 import os
 import cv2
@@ -20,7 +21,7 @@ class Model:
         
         if not self.is_valid_format(filename):
             supported_formats = 'Formatos suportados: jpg, jpeg, png, etc.'
-            return random.choice(self.rude_responses) + " " + supported_formats
+            return f"{random.choice(self.rude_responses)} `" + supported_formats + "`"
 
         self.save_image(url, filename)
 
@@ -30,9 +31,8 @@ class Model:
             print("Error preparing image")
 
         result = self.test_image(data, model)
-        
-        os.remove(filename)
-        return self.classes[result[0]]
+        response = f"{self.random_response()} `" + self.classes[result[0]] + "`"
+        return response
          
     def save_image(self, url, filename):
         img_data = requests.get(url).content
@@ -43,6 +43,7 @@ class Model:
         image = cv2.imread(filename)
         image_fromarray = Image.fromarray(image, 'RGB')
         resize_image = image_fromarray.resize((30, 30))
+        os.remove(filename)
         return np.array(resize_image)
     
     def test_image(self, data, model):
