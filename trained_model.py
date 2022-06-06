@@ -56,11 +56,30 @@ class Model:
         format = filename.split(".")[-1]
         return format == "jpg" or format == 'png' or format == "jpeg"
     
+    def random_response(self):
+        return random.choice(self.sign_responses)
+    
     rude_responses = [
-        'Mandar a mãe ninguém quer.',
+        'Deve ser a sua mãe.',
         'Manda a mãe para ver se classifica.',
-        'Ta me tirando?',
-        'Você não vai me pegar tão fácil.'
+        'Você não vai me pegar tão fácil.',
+        'Que feio, mandando imagem nada a ver para tirar nota de aluno'
+    ]
+
+    sign_responses = [
+        'isso me parece uma placa de:',
+        'meio torto, acho que é:', 
+        'Vendo por esse ângulo, parece:',
+        'Definitivamente é:',
+        'Se eu tivesse que perguntar pro Celso, ele diria que é:',
+        'Na rua, o Thiago vê isso como:',
+        'Olhando por esse lado, é:',
+        'Alguem do grupo digitou rapidinho que é:',
+        'Celso, me da um 10 por esse acerto:',
+        'Valendo uma pizza:',
+        'Já vi essa umas 50mil vezes enquanto treinava:',
+        'Sabia que eu levei 15min pra aprender essa numa GPU?',
+        'As CPUs do Senac levariam umas 30 horas pra aprender essa ai:'
     ]
 
     classes = { 0:'Limite de velocidade (20km/h)',

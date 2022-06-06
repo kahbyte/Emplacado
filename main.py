@@ -63,7 +63,7 @@ async def on_message(message):
         print(img)
         print(url)
       response = model.predict(loaded_model, url)
-      await channel.send("A sua placa é: `" + response + "`")
+      await channel.send(f"{model.random_response()} `" + response + "`")
       return
       
     elif (content == prefix + "sobre"):
