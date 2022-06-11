@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+			"http://www.w3.org/TR/html4/strict.dtd">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<html>
+	<head>
+		<title>Projeto Integrador V - Classificação de Imagens com Deep Learning</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<body>
+		<h1>Projeto Integrador V - Classificação de Imagens com Deep Learning</h1>
+		
+		<ul id="menu">
+			<li><a href="pagina_principal.html">Principal</a></li>
+			<li class="ativo">Relatório</li>
+		</ul>
+		
+		<div class="secao">
+			<h2>Relatório do Projeto</h2>
+            
+				<p> <b>Treinamento:</b>
+					Para começar, subiu-se o dataset no drive para ser acessado pelo Google Colab.
+					Separou-se os dados em classes de "treino"e "teste", dentro das classes de treino foi-se
+					subdivididos em "treino"e "avaliação"
+				</p>
+
+				<p> <b>Exploração do Dataset:</b>
+					Para melhor análise do conjunto de dados, utilizou-se a biblioteca Pandas para ler
+					a fonte e montar gráficos que mostrava a distribuição dos dados, facilitando a visualização
+					do dataset.
+				</p>
+				
+				<p> <b>Coletando Dados do Treino:</b>
+						Conseguindo os dados das imagens e as classificando de 0 a 42 (totalizando 43
+						placas diferentes), os dados de treino foram embaralhados e separados em conjuntos de
+						treino e validação, sendo 70% e 30% respectivamente. Como os dados já estavam limpos
+						foi utilizado o one hot enconding, que é uma técnica que consite em transformar os dados
+						para que seja representado em uma variável categórica de forma binária (indica presença
+						ou ausência de um valor).
+				</p>
+
+				<p> <b>Criação do Modelo:</b>
+					Para obtenção dos resultados esperados, foi criado um modelo com ativação relu e
+					input shape 30x30 com 3 canais. A ideia inicial foi testar com 30 epochs, com otimização
+					Adam e perda categorical crossentropy. Dentre as possíveis métricas, a extraída foi a
+					precisão.
+				</p>
+				
+				<p> <b>Avaliando o Modelo:</b>
+					Antes de iniciar a avalição do modelo, surgiu a idéia de expandir a quantidade de
+					dados, disponíveis. Isso foi feito através do ImageDataGenerator com intervalo de rotação
+					igual a 10, intervalo de zoom igual a 0.15, variação em altura e largura de 0.1 e sem
+					inversão horizontal e vertical.
+					Ao exibir o gráfico com os dados obtidos pelo histórico após a utilização da função
+					fit, chegamos podemos chegar a conclusão de que algo entre 6 e 7 epochs teriam sido o suficiente, já que após isso, não há mais variação.
+					Figura 4, Histórico de avaliação do modelo.
+					Pudemos também extrair a matriz de confusão, que nos auxilia a entender como o modelo se comporta em relação a acertos, erros, falsos positivos e negativos.
+
+				</p>
+				
+				<p> <b>Criação do Bot:</b>
+					O processo de criação do bot é bem simples, se feita através da interface disponibilizada pelo Discord. 
+					Bastou preparar a apresentação para o servidor, dando-lhe um nome e um ícone, para logo em seguida, gerarmos um token que da acesso ao bot via código.
+				</p>
+
+				<p> <b>Desenvolvimento:</b>
+						Após o treinamento e teste do modelo, foi necessário salvá-lo no formato .h5 para
+						uso em produção. O arquivo salvo foi carregado e uma interface preparada para utilizá-lo
+						em conjunto com o código da biblioteca do Discord.
+						Um toque humorístico era desejado ao bot, então múltiplas frases de respostas
+						foram criadas e sorteadas utilizando a biblioteca random, já as imagens foram baixadas
+						utilizando o requests e tratadas através do Image, do Pillow.
+						Como de costume, ao testar uma imagem, o modelo retorna um vetor de probabili-
+						dades, bastou extrair o índice da de maior valor pois ele seria a resposta do modelo. Para
+						tratar melhor a resposta, foi criado um dicionário contendo o nome de todas as placas
+						possíveis.
+						O bot tratava e respondia a esses comandos se, e somente se, fosse enviado uma
+						mensagem com o prefixo \, seguido de um comando dentre os possíveis.
+				</p>
+
+				<p> <b>Deploy no Heroku:</b>
+						O processo para o Deploy no Heroku se iniciou com a configuração do repositório
+						no Github. Nele preparamos as variáveis de ambiente e criamos o requirements.txt. O
+						deploy não foi finalizado pois nos deparamos com diversos crashes e logs de erro, tanto de
+						memória, quanto de importação de bibliotecas.
+				</p>
+
+				<p> <b>Resultado:</b>
+						O resultado foi um sucesso. Um bot sendo executado localmente que recebia
+						imagens vindas do Discord e as encaminhava para o modelo, que por sua vez foi capaz
+						de reconhecer as imagens enviadas, mesmo com elas contendo placas mais desafiadoras
+						(imagens distantes, rotacionadas, placas sujas, etc.)
+				</p>
+		</div>
+
+		<div class="secao">
+			<h2>Conclusão</h2>
+
+			<p> 
+				No último exercício-programa da discplina de Aplicações de Inteligência Artificial, o
+				desafio príncipal era criar um modelo capaz de reconhecer imagens. O objetivo foi concluído
+				com sucesso, tanto de maneira prática como para aprendizado e possibilitou a introdução
+				da turma aos conceitos de Inteligênca Artificial, Machine Learning e Deep Learning com
+				redes convolucionais.
+			</p>
+		</div>
+
+		<div id="footnote">
+			<li>Este projeto foi criado por Kaue Sales, Gabriel Kenji, Vinycius Zanardi e Thiago Félix</a>.</li>
+		</div>
+		
+	</body>
+</html>

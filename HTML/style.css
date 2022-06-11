@@ -1,0 +1,97 @@
+body {
+	font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	color: #3b3b3b;
+}
+
+h1,h2 {
+	font-family: Georgia;
+}
+
+h1 {
+	border-bottom: 3px solid #aaa;
+	background-color: #3b3b3b;
+	color: #ddd;
+	padding: 50px;	
+	text-align: center;
+}
+
+h2 {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background-color: #DDD;
+	padding: 20px;
+	padding-left: 5px;
+	margin: 0 0 0 -20px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.secao {
+	background-color: #eee;
+	padding: 15px;
+	padding-left: 15px;
+}
+
+label {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+label:after {
+	content: ":";
+}
+
+a {
+	text-decoration:none;
+	color: #f33;
+}
+
+a:visited {
+	text-decoration:none;
+	color: rgb(212, 105, 5);
+}
+
+a:hover {
+	text-decoration:none;
+	color: #fa0;
+}
+
+#menu {
+	margin: 10;
+}
+
+#menu ul, #menu li {
+	display: inline;
+	list-style-type: none;
+	margin: 10;
+	padding: 10;
+}
+
+#menu .ativo {
+	background-color: #ddd;
+}
+
+.vcard {
+	padding: 5px;
+}
+
+.url, .email {
+	display: block;
+}
+
+/*.photo {
+	float: right;
+	margin-right: 20%;
+}
+*/
+#footnote {
+	border-top: 1px dashed #aaa;
+	padding: 5px;
+	font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	
+}
+
+#footnote li {
+	list-style-type: none;
+	margin-top: 3px;
+}

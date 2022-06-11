@@ -70,8 +70,8 @@ async def on_message(message):
         * Thiago Felix
         * Vinycius Zanardi
 
-      Web-site: [Em construção] ⚠️
-      Artigo Científico: [Em construção] ⚠️
+      Vídeo: https://youtu.be/mNjTg-ZnnCA
+      Artigo Científico: https://drive.google.com/file/d/1-TcXzvQ-eyN_l21xiu5cwiY0Cs6MHojh/view?usp=sharing
       Para mais informações: https://github.com/kahbyte/Emplacado 🖥️
       """
       await channel.send(sobre)
