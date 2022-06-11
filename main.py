@@ -76,10 +76,6 @@ async def on_message(message):
       """
       await channel.send(sobre)
     
-    #elif (content == prefix + "site"):
-      #await message.delete()
-      #await channel.send("regra do senac é seu c*")
-    
     #Novo comando de piada
     #elif (content == )
 
