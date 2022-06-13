@@ -1,6 +1,6 @@
 # Emplacado
 
-![Emplacado](https://user-images.githubusercontent.com/42659122/173260872-39686e60-02ce-41ec-a6c9-992b33aaad3e.png)
+![Emplacado](https://user-images.githubusercontent.com/42659122/173260872-39686e60-02ce-41ec-a6c9-992b33aaad3e.png =100x)
 
 Bot com o objetivo de indentificar placas de transito através de imagens recebidas via Discord!
 
@@ -19,5 +19,7 @@ Bot com o objetivo de indentificar placas de transito através de imagens recebi
 ## Para executar
 
 ```
-Por conta de fatores externos, o processo de execução desse código não é simples. Você deverá ter as bibliotecas importadas instaladas e ter um bot próprio do discord com um token criado por você adicionado a um arquivo .env, do qual a api do Discord invalida o token imediatamente caso seja adicionado ao Github.
+Por conta de fatores externos, o processo de execução desse código não é simples.
+Você deverá ter as bibliotecas importadas instaladas e ter um bot próprio do discord com um token criado por você adicionado a um arquivo .env,
+do qual a api do Discord invalida o token imediatamente caso seja adicionado ao Github.
 ``` 
