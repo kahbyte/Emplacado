@@ -1,8 +1,10 @@
 # Emplacado
 
-<img src="https://user-images.githubusercontent.com/42659122/173260872-39686e60-02ce-41ec-a6c9-992b33aaad3e.png" alt="drawing" style="width:100px;"/>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/42659122/173260872-39686e60-02ce-41ec-a6c9-992b33aaad3e.png" alt="drawing" style="width:300px;"/>
+</p>
 
-Bot com o objetivo de indentificar placas de transito através de imagens recebidas via Discord!
+Bot que indentifica placas de transito através de imagens recebidas via Discord!
 
 ## Criado Por 
 1. Gabriel Kenji
